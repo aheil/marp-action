@@ -1,8 +1,8 @@
 #!/bin/sh -l
 
-# echo "Hello $1"
+echo "src_folder $1"
 
-for f in slides/*.md; do
+for f in /github/workspace/$1/*.md; do
     [ -f "$f" ] || break
     echo "Found $f";
 done

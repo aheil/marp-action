@@ -1,6 +1,13 @@
 ---
 name: marp-action
 description: "Create Marp presentation files"
-runs:
+inputs:
+    src-dir: # where the markdown files are located in your repo eg. slides
+        description: 'Source directory'
+        required: true
+        default: '.'
+    runs:
     using: 'docker'
     image: 'Dockerfile'
+    args:
+        - ${{ inputs.src-dir }}
