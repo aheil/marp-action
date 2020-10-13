@@ -4,11 +4,11 @@ echo "src-dir: $1"
 
 echo "ls: "
 
-ls /github/workflow/$1
+ls /github/workspace
 
 echo "files: "
 
-for f in /github/workflow/$1/*.md; do
+for f in /github/workspace/$1/*.md; do
     [ -f "$f" ] || break
     echo "Found $f";
 done
