@@ -1,0 +1,6 @@
+---
+name: marp-action
+description: "Create Marp presentation files"
+runs:
+    using: 'docker'
+    image: 'Dockefile'
