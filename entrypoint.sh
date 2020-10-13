@@ -1,13 +1,5 @@
 #!/bin/sh -l
 
-cd /github/workspace/$1
-
-repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-
-git init
-git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-git pull github ${GITHUB_REF} --ff-only
-
 for f in /github/workspace/$1/*.md; do
     [ -f "$f" ] || break
     fn=$(basename "$f" .md)
@@ -17,4 +9,6 @@ for f in /github/workspace/$1/*.md; do
 done
 
 git status 
+git config user.name "$GITHUB_ACTOR"
+git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 git commit -m 'marp-action publish'
