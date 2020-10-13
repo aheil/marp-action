@@ -6,7 +6,7 @@ inputs:
         description: 'Source directory'
         required: true
         default: '.'
-    runs:
+runs:
     using: 'docker'
     image: 'Dockerfile'
     args:
