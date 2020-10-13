@@ -1,10 +1,12 @@
 #!/bin/sh -l
 
-for f in /github/workspace/$1/*.md; do
+cd /github/workspace/$1
+
+for f in *.md; do
     [ -f "$f" ] || break
     fn=$(basename "$f" .md)
     echo "📄 Processing $fn ..."
-    node /home/marp/.cli/marp-cli.js $f --allow-local-files -o "${fn}.pdf"
+    node /home/marp/.cli/marp-cli.js $f --allow-local-files -o "$1/${fn}.pdf"
     git add "${fn}.pdf"
 done
 
