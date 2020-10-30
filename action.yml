@@ -6,6 +6,9 @@ inputs:
         description: 'Source directory'
         required: true
         default: '.'
+    src-files: # list of files     
+        description: 'Files to process'
+        required: false
 runs:
     using: 'docker'
     image: 'Dockerfile'
