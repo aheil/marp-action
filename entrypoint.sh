@@ -2,7 +2,7 @@
 
 cd /github/workspace/$1
 
-$json_data = '+$2+'
+$json_data = '$2'
 echo $son_data | jq .[]
 
 for f in *.md; do
