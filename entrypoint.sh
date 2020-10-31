@@ -8,7 +8,7 @@ echo $2 | jq .[]
 
 while IFS= read -r line ; do 
     echo $line; 
-done <<< $2 | jq .[]
+done <<< ($2 | jq .[])
 
 
 for f in *.md; do
