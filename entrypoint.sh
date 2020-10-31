@@ -2,6 +2,8 @@
 
 cd /github/workspace/$1
 
+echo $2
+
 for f in *.md; do
     [ -f "$f" ] || break
     fn=$(basename "$f" .md)
@@ -10,8 +12,8 @@ for f in *.md; do
     git add "${fn}.pdf"
 done
 
-git status 
-git config user.name "$GITHUB_ACTOR"
-git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-git commit -m 'marp-action publish'
-git push
+#git status 
+#git config user.name "$GITHUB_ACTOR"
+#git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+#git commit -m 'marp-action publish'
+#git push
