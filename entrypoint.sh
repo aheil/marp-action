@@ -2,8 +2,7 @@
 
 cd /github/workspace/$1
 
-json_data='$2'
-echo $json_data | jq .[]
+echo $2 | jq .[]
 
 for f in *.md; do
     [ -f "$f" ] || break
