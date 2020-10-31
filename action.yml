@@ -14,3 +14,4 @@ runs:
     image: 'Dockerfile'
     args:
         - ${{ inputs.src-dir }}
+        - ${{ inputs.src-files }}
