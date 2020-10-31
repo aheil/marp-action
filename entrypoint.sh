@@ -4,6 +4,13 @@ cd /github/workspace/$1
 
 echo $2 | jq .[]
 
+#for c in ($2 | jq .[])
+
+while IFS= read -r line ; do 
+    echo $line; 
+done <<< $2 | jq .[]
+
+
 for f in *.md; do
     [ -f "$f" ] || break
     fn=$(basename "$f" .md)
