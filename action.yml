@@ -8,7 +8,8 @@ inputs:
         default: '.'
     src-files: # list of files     
         description: 'Files to process'
-        required: false
+        required: true
+        default: '*'
 runs:
     using: 'docker'
     image: 'Dockerfile'
