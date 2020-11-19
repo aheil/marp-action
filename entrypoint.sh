@@ -2,22 +2,39 @@
 
 cd /github/workspace/$1
 
-echo $2 | jq .[]
+#for f in *.md; do
+#    [ -f "$f" ] || break
+#    fn=$(basename "$f" .md)
+#    echo "📄 Processing $fn ..."
+#    node /home/marp/.cli/marp-cli.js $f --allow-local-files -o "${fn}.pdf"
+#    git add "${fn}.pdf"
+#done
 
-#for c in ($2 | jq .[])
+echo $2
+f=$(echo $2 | jq -c -r .[])
+echo $f
 
-while IFS= read -r line ; do 
-    echo $line; 
-done <<< cat $2 | jq .[]
+if [ -z $2 ]; then  # if $2 is not set
+    for f in *.md; do
+        [ -f "$f" ] || break
+        fn=$(basename "$f" .md)
+        echo "📄 Processing $fn ..."
+        node /home/marp/.cli/marp-cli.js $f --allow-local-files -o "${fn}.pdf"
+        git add "${fn}.pdf"
+    done
+else 
+    echo "$f" | while IFS= read -r line ; do
+        if [ $(dirname $line) = $1 ]; then
+            #echo $(dirname $line);            
+            #echo $(basename $line *.md);
+            fn=$(basename "$f" .md)
+            echo "📄 Processing $fn ..."
+            node /home/marp/.cli/marp-cli.js $f --allow-local-files -o "${fn}.pdf"
+            git add "${fn}.pdf"            
+        fi
+    done
+fi
 
-
-for f in *.md; do
-    [ -f "$f" ] || break
-    fn=$(basename "$f" .md)
-    echo "📄 Processing $fn ..."
-    node /home/marp/.cli/marp-cli.js $f --allow-local-files -o "${fn}.pdf"
-    git add "${fn}.pdf"
-done
 
 #git status 
 #git config user.name "$GITHUB_ACTOR"
