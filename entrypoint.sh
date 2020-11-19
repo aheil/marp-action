@@ -16,9 +16,10 @@ echo $f
 
 if [ -z $2 ]; then  # if $2 is not set
     for f in *.md; do
+        echo "checking $f"
         [ -f "$f" ] || break
         fn=$(basename "$f" .md)
-        echo "📄 Processing $fn ..."
+        echo "📄 Processing $fn.md ..."
         node /home/marp/.cli/marp-cli.js $f --allow-local-files -o "${fn}.pdf"
         git add "${fn}.pdf"
     done
