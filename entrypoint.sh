@@ -10,9 +10,9 @@ cd /github/workspace/$1
 #    git add "${fn}.pdf"
 #done
 
-echo $2
-f=$(echo $2 | jq -c -r .[])
-echo $f
+#echo $2
+
+#echo $f
 
 if [ -z $2 ]; then  # if $2 is not set
     for f in *.md; do
@@ -23,6 +23,7 @@ if [ -z $2 ]; then  # if $2 is not set
         git add "${fn}.pdf"
     done
 else 
+    f=$(echo $2 | jq -c -r .[])
     echo "$f" | while IFS= read -r line ; do
         if [ $(dirname $line) = $1 ]; then
             echo "DIRNAME:"
@@ -31,7 +32,9 @@ else
             echo $(basename $line .md);
             fn=$(basename $line .md)
             echo "📄 Processing $fn ..."
-            #node /home/marp/.cli/marp-cli.js $line --allow-local-files -o "${fn}.pdf"
+            echo "LINE"
+            echo $line
+            node /home/marp/.cli/marp-cli.js $line --allow-local-files -o "${fn}.pdf"
             #git add "${fn}.pdf"            
         fi
     done
