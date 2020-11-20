@@ -31,8 +31,8 @@ else
             echo $(basename $line .md);
             fn=$(basename $line .md)
             echo "📄 Processing $fn ..."
-            node /home/marp/.cli/marp-cli.js $line --allow-local-files -o "${fn}.pdf"
-            git add "${fn}.pdf"            
+            #node /home/marp/.cli/marp-cli.js $line --allow-local-files -o "${fn}.pdf"
+            #git add "${fn}.pdf"            
         fi
     done
 fi
