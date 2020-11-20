@@ -29,9 +29,9 @@ else
             echo $(dirname $line);            
             echo "BASENAME"
             echo $(basename $line .md);
-            fn=$(basename "$f" .md)
+            fn=$(basename "$line" .md)
             echo "📄 Processing $fn ..."
-            node /home/marp/.cli/marp-cli.js $f --allow-local-files -o "${fn}.pdf"
+            node /home/marp/.cli/marp-cli.js $line --allow-local-files -o "${fn}.pdf"
             git add "${fn}.pdf"            
         fi
     done
