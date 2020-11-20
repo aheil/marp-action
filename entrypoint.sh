@@ -28,7 +28,7 @@ else
             echo "DIRNAME:"
             echo $(dirname $line);            
             echo "BASENAME"
-            echo $(basename $line *.md);
+            echo $(basename $line .md);
             # fn=$(basename "$f" .md)
             # echo "📄 Processing $fn ..."
             # node /home/marp/.cli/marp-cli.js $f --allow-local-files -o "${fn}.pdf"
