@@ -34,7 +34,8 @@ else
             echo "📄 Processing $fn ..."
             echo "LINE"
             echo $line
-            #node /home/marp/.cli/marp-cli.js $line --allow-local-files -o "${fn}.pdf" #-> ohne diese Zeile läuft es zweimal für zwei Einträge
+            node /home/marp/.cli/marp-cli.js $line --allow-local-files -o "${fn}.pdf" #-> ohne diese Zeile läuft es zweimal für zwei Einträge
+            cd /github/workspace/$1
             #git add "${fn}.pdf"
             echo "foo"
         else
