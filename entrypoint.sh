@@ -2,20 +2,8 @@
 
 cd /github/workspace/$1
 
-#for f in *.md; do
-#    [ -f "$f" ] || break
-#    fn=$(basename "$f" .md)
-#    echo "📄 Processing $fn ..."
-#    node /home/marp/.cli/marp-cli.js $f --allow-local-files -o "${fn}.pdf"
-#    git add "${fn}.pdf"
-#done
-
-#echo $2
-
-#echo $f
-
-if [ -z $2 ]; then  # if $2 is not set
-    for f in *.md; do
+if [ -z $2 ]; then              # if $2 is not set  (i.e. no file list)
+    for f in *.md; do           # we process all Markdown files in the given src-dir ($1)
         [ -f "$f" ] || break
         fn=$(basename "$f" .md)
         echo "📄 Processing $fn.md ..."
@@ -34,12 +22,13 @@ else
             echo "📄 Processing $fn ..."
             echo "LINE"
             echo $line
-            node /home/marp/.cli/marp-cli.js $line --allow-local-files -o "${fn}.pdf" #-> ohne diese Zeile läuft es zweimal für zwei Einträge
-            cd /github/workspace/$1
+            echo 
+            # node /home/marp/.cli/marp-cli.js $line --allow-local-files -o "${fn}.pdf" #-> ohne diese Zeile läuft es zweimal für zwei Einträge
+            # cd /github/workspace/$1
             #git add "${fn}.pdf"
-            echo "foo"
+            echo "foo"        
         else
-            echo "ELSE"
+            echo "ELSE -> not in directory"
              echo "DIRNAME:"
             echo $(dirname $line);            
             echo "BASENAME"

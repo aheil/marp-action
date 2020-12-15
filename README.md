@@ -9,7 +9,7 @@ This  GitHub action creating presentation files using [Marp](https://marp.app/).
 
 E.g. if your markdown files are located in a folder `slides` in your repository provide `slides` as input. Default `.` .
 
-### 'src-files' 
+### `src-files`
 
 **Optional** A JSON-formatted list of files to be processed.
 
