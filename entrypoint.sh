@@ -17,11 +17,11 @@ else
         echo $line;
     done
     echo "--start--"
-    files = "";
+    files="";
     echo "$f" | while IFS= read -r line ; do
         if [ $(dirname $line) = $1 ]; then            
             files= "${files} ${line}"
-            echo "✔ Added $line to processing queue."
+            echo "📄 Added $line to processing queue."
             #echo "DIRNAME:"
             #echo $(dirname $line);            
             #echo "BASENAME"
@@ -35,7 +35,7 @@ else
             # cd /github/workspace/$1
             #git add "${fn}.pdf"           
         else
-            echo "🛑 Error processing: $line not in given directory $1."
+            echo "🛑 Error processing: $line not in given directory $1. Skipping file."
         fi
         node /home/marp/.cli/marp-cli.js "${files}" --pdf --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
     done
