@@ -40,7 +40,7 @@ else
         else
             echo "🛑 Error processing: $line not in given directory $1. Skipping file."
         fi        
-    done
+    done <input.data
     echo ${files[@]}
     echo "done."
     for fi in ${files[@]}; do
