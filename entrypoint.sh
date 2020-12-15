@@ -17,32 +17,27 @@ else
         echo $line;
     done
     echo "--start--"
+    files = "";
     echo "$f" | while IFS= read -r line ; do
-        if [ $(dirname $line) = $1 ]; then
-            echo "DIRNAME:"
-            echo $(dirname $line);            
-            echo "BASENAME"
-            echo $(basename $line .md);
-            fn=$(basename $line .md)
-            echo "📄 Processing $fn ..."
-            echo "LINE"
-            echo $line
-            echo 
-            node /home/marp/.cli/marp-cli.js $line --pdf --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
+        if [ $(dirname $line) = $1 ]; then            
+            files= "${files} ${line}"
+            echo "✔ Added $line to processing queue."
+            #echo "DIRNAME:"
+            #echo $(dirname $line);            
+            #echo "BASENAME"
+            #echo $(basename $line .md);
+            #fn=$(basename $line .md)
+            #echo "📄 Processing $fn ..."
+            #echo "LINE"
+            #echo $line
+            #echo 
+            ##node /home/marp/.cli/marp-cli.js $line --pdf --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
             # cd /github/workspace/$1
-            #git add "${fn}.pdf"
-            echo "foo"        
+            #git add "${fn}.pdf"           
         else
-            echo "ELSE -> not in directory"
-             echo "DIRNAME:"
-            echo $(dirname $line);            
-            echo "BASENAME"
-            echo $(basename $line .md);
-            fn=$(basename $line .md)
-            echo "📄 Processing $fn ..."
-            echo "LINE"
-            echo $line
+            echo "🛑 Error processing: $line not in given directory $1."
         fi
+        node /home/marp/.cli/marp-cli.js "${files}" --pdf --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
     done
 fi
 
