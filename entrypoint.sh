@@ -14,6 +14,10 @@ else
     f=$(echo $2 | jq -c -r .[])
     echo "---> $f <---"
     echo "$f" | while IFS= read -r line ; do
+        echo $line;
+    done
+    echo "--start--"
+    echo "$f" | while IFS= read -r line ; do
         if [ $(dirname $line) = $1 ]; then
             echo "DIRNAME:"
             echo $(dirname $line);            
