@@ -9,9 +9,9 @@ This  GitHub action creating presentation files using [Marp](https://marp.app/).
 
 E.g. if your markdown files are located in a folder `slides` in your repository provide `slides` as input. Default `.` .
 
-### 'src-bar' 
+### 'src-files' 
 
-**Optional** A JSON-formated list of files to be processed.
+**Optional** A JSON-formatted list of files to be processed.
 
 All files outside of the `src-dir` directory will be ignored, though.
 
@@ -32,5 +32,5 @@ with:
 uses: aheil/marp-action@v1.1.0
 with:
   src-dir: 'slides'
-  src-files: 'foo.md,"slides/bar.md"]'
+  src-files: '["foo.md","slides/bar.md"]'
 ```
