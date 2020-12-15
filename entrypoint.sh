@@ -17,7 +17,7 @@ else
         echo $line;
     done
     echo "--start--"
-    files=();
+    files=()
     echo "$f" | while IFS= read -r line ; do
         echo "📄 Processing ${line}"
         if [ $(dirname $line) = $1 ]; then            
@@ -39,8 +39,8 @@ else
             echo "🛑 Error processing: $line not in given directory $1. Skipping file."
         fi        
     done
-    for f in ${files[@]}; do
-        node /home/marp/.cli/marp-cli.js $f -o $(basename $line .md) --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
+    for fn in ${files[@]}; do
+        node /home/marp/.cli/marp-cli.js $fn -o $(basename $fn .md) --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
     done
     #node /home/marp/.cli/marp-cli.js "${files}" --pdf --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
 fi
