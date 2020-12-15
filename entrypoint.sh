@@ -34,7 +34,7 @@ else
             #echo 
             ##node /home/marp/.cli/marp-cli.js $line --pdf --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
             # cd /github/workspace/$1
-            #git add "${fn}.pdf"           
+            #git add "${fn}.pdf"            
         else
             echo "🛑 Error processing: $line not in given directory $1. Skipping file."
         fi        
