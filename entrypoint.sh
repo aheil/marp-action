@@ -12,6 +12,7 @@ if [ -z $2 ]; then              # if $2 is not set  (i.e. no file list)
     done
 else 
     f=$(echo $2 | jq -c -r .[])
+    echo "---> $f <---"
     echo "$f" | while IFS= read -r line ; do
         if [ $(dirname $line) = $1 ]; then
             echo "DIRNAME:"
