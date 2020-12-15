@@ -39,8 +39,9 @@ else
             echo "🛑 Error processing: $line not in given directory $1. Skipping file."
         fi        
     done
-    for fn in ${files[@]}; do
-        node /home/marp/.cli/marp-cli.js $fn -o $(basename $fn .md) --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
+    for fi in ${files[@]}; do
+        echo $fi
+        node /home/marp/.cli/marp-cli.js $fi -o $(basename ${fi} .md) --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
     done
     #node /home/marp/.cli/marp-cli.js "${files}" --pdf --allow-local-files #-> ohne diese Zeile läuft es zweimal für zwei Einträge
 fi
