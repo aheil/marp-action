@@ -21,7 +21,7 @@ else
     echo "$f" | while IFS= read -r line ; do
         echo "📄 Processing ${line}"
         if [ $(dirname $line) = $1 ]; then            
-            files+=($line)
+            files+=("$line")
             echo "✅ Added $line to processing queue."
             #echo "DIRNAME:"
             #echo $(dirname $line);            
