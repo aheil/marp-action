@@ -3,7 +3,7 @@ FROM marpteam/marp-cli:latest
 USER root
 
 RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
-RUN apk update && upgrade
+RUN apk update && apk upgrade
 RUN apk upgrade musl
 
 RUN apk update && apk upgrade && \
