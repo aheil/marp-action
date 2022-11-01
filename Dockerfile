@@ -2,7 +2,7 @@ FROM marpteam/marp-cli:latest
 
 USER root
 
-RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && 
+RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
 
 RUN apk update && apk upgrade && \
     apk add --no-cache git@edge bash@edge jq@edge
