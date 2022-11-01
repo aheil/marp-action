@@ -1,5 +1,8 @@
 #!/bin/bash -l
 
+echo "Adding repository directory to the temporary git global config as a safe directory"
+/usr/bin/git config --global --add safe.directory /github/workspace
+
 cd /github/workspace/$1
 
 if [ -z $2 ]; then              # if $2 is not set  (i.e. no file list)
